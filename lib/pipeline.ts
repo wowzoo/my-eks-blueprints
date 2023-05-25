@@ -9,11 +9,13 @@ export default class PipelineConstruct extends Construct {
 
     const account = props?.env?.account!;
     const region = props?.env?.region!;
+    
+    const addOn = new blueprints.ArgoCDAddOn();
 
     const blueprint = blueprints.EksBlueprint.builder()
     .account(account)
     .region(region)
-    .addOns()
+    .addOns(addOn)
     .teams();
   
     blueprints.CodePipelineStack.builder()
